@@ -27,3 +27,27 @@ p {
   margin: 0;
   padding: 100px 200px 0px 0px;
 }
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1047e0;
+  width: 500px;
+  height: 500px;
+  margin-left: -100%;
+  transition: ease-in-out;
+}
+#menu-icon {
+  font-style: normal;
+  color: #1047e0;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  font-size: 80px;
+}
+#menu-toggle {
+  display: none;
+}
+#menu-toggle:checked ~ #menu {
+  margin-left: 0px;
+}
