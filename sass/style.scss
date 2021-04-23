@@ -1,4 +1,5 @@
 $black: #000;
+$white: #ffff;
 $cyan: #10faf2;
 $purple: #341ed6;
 $shadow: #842dd6;
@@ -13,52 +14,43 @@ body {
   min-height: 100vh;
   background-color: $black;
 }
-@mixin flex($direction: column, $align: center, $justify: center) {
+@mixin flex($direction: row, $align: center, $justify: center) {
   display: flex;
   flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
 }
 section {
+  @include flex(flex-start, center, space-around);
   .inicio {
-    @include flex();
-    margin-top: 200px;
-    margin-bottom: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-bottom: 100px;
     border-bottom: 1px solid $cyan;
-
-    .primeiroh1 {
-      text-shadow: 1px 5px 7px $shadow;
-      margin-top: -300px;
-      font-size: 80px;
-      font-family: "Sacramento", cursive;
-      color: $cyan;
-
-      .primeirop {
-        font-size: 70px;
-        font-family: "Sacramento", cursive;
-        color: $cyan;
-
-        .eu {
-          box-shadow: 5px 5px 14px 5px $cyan;
-          margin-bottom: 300px;
-          border-radius: 50%;
-        }
-      }
-    }
   }
-  margin: 0;
-  padding: 100px 200px 0px 0px;
+  .primeiroh1 {
+    text-shadow: 1px 5px 7px $shadow;
+    font-size: 80px;
+    font-family: "Sacramento", cursive;
+    color: $cyan;
+  }
+  .primeirop {
+    font-size: 70px;
+    font-family: "Sacramento", cursive;
+    color: $cyan;
+  }
+  .eu {
+    box-shadow: 5px 5px 14px 5px $cyan;
+    border-radius: 50%;
+    margin: 0;
+  }
 }
+
 .sobre {
   @include flex();
-  margin-top: 200px;
+  margin-top: 100px;
   color: $cyan;
   margin-bottom: 80px;
 
   .segundop {
-    padding: 7px 15px 5px 10px;
     border: $purple;
     border-style: groove;
     margin-right: 100px;
@@ -78,46 +70,55 @@ section {
   margin: 0px 50px 50px;
   border-bottom: 1px solid $cyan;
 
-  .formacao a {
-    width: 300px;
+  .segundop {
+    border: $purple;
+    border-style: groove;
+    margin-right: 100px;
+    margin-left: 50px;
+    width: 700px;
+    height: 200px;
+    font-size: 30px;
+    font-family: "Noto Sans JP", sans-serif;
+    text-align: center;
   }
 }
+.formacao a {
+  width: 300px;
+}
+
 footer {
   @include flex(flex-start, center, space-around);
   width: 100%;
   padding: 30px 0px;
-
-  footer ul li {
-    background: $purple;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    padding: 10px;
-
-    footer img {
-      width: 40px;
-      height: 40px;
-
-      footer p {
-        margin-left: 20px;
-
-        .terceirop {
-          margin-top: 10px;
-          font-family: "Bangers", cursive;
-          font-size: 100px;
-          border-bottom: 50px double $purple;
-
-          .quartop {
-            font-size: 35px;
-          }
-        }
-      }
-    }
-  }
+}
+footer ul li {
+  background: $purple;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+footer img {
+  width: 40px;
+  height: 40px;
+}
+footer p {
+  margin-left: 20px;
+}
+.terceirop {
+  margin-top: 10px;
+  font-family: "Bangers", cursive;
+  font-size: 100px;
+  border-bottom: 50px double $purple;
+  color: $white;
+}
+.quartop {
+  font-size: 35px;
+  color: $white;
 }
 
 @media (max-width: $breakpoint-mobile) {
   section {
-    @include flex(column-reverse, center, center);
+    @include flex(column-reverse, center);
     display: flex;
     padding-left: 70px;
     margin: 0;
@@ -140,30 +141,38 @@ footer {
   }
 
   .sobre {
-    @include flex(column, center, space-around);
+    @include flex(column);
     margin-top: 50px;
     margin-bottom: 50px;
+
+    .segundop {
+      font-size: 15px;
+      width: 90%;
+      height: min-content;
+      margin: 0px 20px 40px 0px;
+    }
   }
 
   .formacao {
-    @include flex();
+    @include flex(column);
     margin: 0px;
+
+    .segundop {
+      font-size: 15px;
+      width: 90%;
+      height: min-content;
+      margin: 0px 20px 40px 0px;
+    }
   }
-
   footer {
-    @include flex(column-reverse, center, center);
-
+    @include flex(column-reverse, center);
+    .terceirop {
+      font-size: 80px;
+      margin: 0%;
+    }
     .quartop {
+      margin: 0%;
       font-size: 18px;
-
-      .segundop {
-        font-size: 16px;
-        width: 95%;
-        height: min-content;
-        margin: 0;
-        padding: 0;
-        margin-bottom: 30px;
-      }
     }
   }
 }
